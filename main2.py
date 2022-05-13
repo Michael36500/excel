@@ -1,5 +1,6 @@
-from openpyxl import Workbook
-from openpyxl.styles import PatternFill
+# from openpyxl import Workbook
+import openpyxl
+# from openpyxl.styles import PatternFill
 import fnct as hl
 import cv2
 import numpy as np
@@ -9,16 +10,19 @@ img = cv2.imread(path)
 # print(img)
 
 # import openpyxl
-wb = Workbook()
-sheet = wb["Sheet"] # This sheet is created by default
+wb = openpyxl.Workbook()
+# sheet = wb["Sheet"] # This sheet is created by default
+sheet = wb.active # This sheet is created by default
 
 cnt = 0
 srow, scol = img.shape[:2]   # 1,048,576 rows or 16,384 columns,  řádky, sloupce
 
 # row vodorovně     col vertikálně
 
+
+# nastavení barev
 for row in range(srow):
-    print(row)
+    print("COLORED", row)
     cnt = 0
     row = row + 1
     for col in range(scol):
@@ -27,11 +31,23 @@ for row in range(srow):
         # print(col, cnt)
         letcol = hl.nl(cnt)
         color = hl.rgb(img[row - 1][col - 1][2],  img[row - 1][col - 1][1],  img[row - 1][col - 1][0])  #formát RGB, beru z multdim arraye, indexy pozpátku kvůli OpenCV BGR
-        fill = PatternFill("solid", start_color=color)
+        fill = openpyxl.styles.PatternFill("solid", start_color=color)
         sheet["{}{}".format(letcol, row)].fill = fill  # letter, řádek
+
+# nastavení šířky na 1
+for row in range(srow):
+    print("RESIZED ROWS", row)
+    row = row + 1
+    sheet.row_dimensions[row].height = 3.75
+for col in range(scol):
+    print("RESIZED COL", col)
+    col = col + 1
+    coll = hl.nl(col)
+    sheet.column_dimensions[coll].width = 0.7
+
 
 
         
-wb.save("wb3y;;.xlsx")
+wb.save("wb3.xlsx")
 
 print("complete")
