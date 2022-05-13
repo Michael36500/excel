@@ -10,8 +10,8 @@ sheet = wb["Sheet"] # This sheet is created by default
 
 cnt = 0
 
-srow = 15  # row 1048576
-scol = 10
+srow = 15  # row 1048576 sloupce
+scol = 10   # řádky
 
 # row vodorovně     col vertikálně
 
