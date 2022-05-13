@@ -18,15 +18,16 @@ cnt = 0
 # projede všechny sloupce
 for row in img:
     cnt = cnt + 1
-    letline = hl.nl(cnt)
+    letrow = hl.nl(cnt)
 
+    print(row)
     # projede sloupec po řádkách
-    for linew in row:
+    for line in row:
+        print(line)
         # row = row + 1
-        print(row)
-        color = hl.rgb(row,row,row)
+        color = hl.rgb(0,0,0)
         fill = PatternFill("solid", start_color=color)
-        sheet["{}{}".format(letline, row)].fill = fill
+        sheet["{}{}".format(letrow, line)].fill = fill  # letter, řádek
 
 
 wb.save("wb.xlsx")
