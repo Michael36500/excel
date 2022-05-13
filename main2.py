@@ -1,3 +1,7 @@
+# will work always, but maybe excel wont open, so scale down imagepip install opencv-python
+
+
+
 # from openpyxl import Workbook
 import openpyxl
 # from openpyxl.styles import PatternFill
