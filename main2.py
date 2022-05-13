@@ -5,9 +5,13 @@ import fnct as hl
 import cv2
 import numpy as np
 
+def nothing(x):
+    pass
 path = "img.jpg"
+# path = str(input())
 img = cv2.imread(path)
-# print(img)
+# cv2.namedWindow("Display", cv2.WINDOW_AUTOSIZE)
+# cv2.createTrackbar('R','Display',0,255,nothing)
 
 # import openpyxl
 wb = openpyxl.Workbook()
