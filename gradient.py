@@ -10,22 +10,23 @@ sheet = wb["Sheet"] # This sheet is created by default
 
 cnt = 0
 
-size = 255  # row 1048576
+srow = 15  # row 1048576
+scol = 10
 
-# row vodorovně     column vertikálně
+# row vodorovně     col vertikálně
 
-for row in range(size):
+for row in range(srow):
     cnt = 0
     row = row + 1
 
-    for column in range(size):
-        column = column + 1
+    for col in range(scol):
+        col = col + 1
         cnt = cnt + 1
-        # print(column, cnt)
-        letcolumn = hl.nl(cnt)
-        color = hl.rgb(row,column,0)
+        # print(col, cnt)
+        letcol = hl.nl(cnt)
+        color = hl.rgb(cnt*20,row*20,cnt*20)
         fill = PatternFill("solid", start_color=color)
-        sheet["{}{}".format(letcolumn, row)].fill = fill  # letter, řádek
+        sheet["{}{}".format(letcol, row)].fill = fill  # letter, řádek
 
 
         
